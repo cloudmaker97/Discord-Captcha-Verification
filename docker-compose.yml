@@ -2,6 +2,7 @@ version: '3'
 
 services:
   verification-bot:
+    restart: always
     image: node:latest
     working_dir: /app
     volumes:
