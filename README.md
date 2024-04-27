@@ -15,6 +15,18 @@ You need to have [Node.js](https://nodejs.org/en/) and [pnpm](https://pnpm.io/) 
 4. Fill in the required fields in the `.config.json` file (see [Settings](#settings))
 5. Start the bot with `pnpm start`
 
+### Run with Docker
+
+You can also run the bot with Docker. You need to have [Docker](https://www.docker.com/) installed.
+
+1. Clone the repository
+2. Copy the `config.example.json` file and rename it to `.config.json`
+3. Fill in the required fields in the `.config.json` file (see [Settings](#settings))
+4. Run the following command to start the bot: `docker compose up -d.`
+5. To stop the bot, run the following command: `docker compose down`
+
+You can set the published ports in the `docker-compose.yml` file.
+
 ## Settings
 
 These are the settings that need to be filled in the `config.json` file:
