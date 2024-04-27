@@ -41,6 +41,20 @@ These are the settings that need to be filled in the `config.json` file:
 - `turnstileSitekey`: The sitekey of the CloudFlare Turnstile captcha
 - `turnstileSecret`: The secret of the CloudFlare Turnstile captcha
 
+## Screenshots
+
+The embed that will be created on the discord channel:
+
+![2024-04-27 03_58_26-#verifizieren _ The High Roller - Discord](https://github.com/cloudmaker97/Discord-Captcha-Verification/assets/4189795/866913af-edb7-4872-9458-01e7231f936a)
+
+The opened website with captcha validation:
+
+![2024-04-27 03_58_58-Verifizierung abschließen](https://github.com/cloudmaker97/Discord-Captcha-Verification/assets/4189795/a4ce933e-e8b6-43bf-807d-e3b5990be21c)
+
+The logged message in a hidden discord channel:
+
+![2024-04-27 04_01_04-#verification _ The High Roller - Discord](https://github.com/cloudmaker97/Discord-Captcha-Verification/assets/4189795/44959157-855a-46fb-9889-83833a931c98)
+
 ## Development
 
 If you want to contribute to the project, you can use the following commands:
