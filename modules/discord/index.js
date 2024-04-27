@@ -13,7 +13,7 @@ client.on('interactionCreate', async interaction => {
         }
 
         let base64 = Buffer.from(JSON.stringify(verificationObject)).toString('base64');
-        interaction.reply({ content: `Bitte öffne folgenden Link: <${protocol}://${host}${port!=80?':'+port:''}?data=${base64}>`, ephemeral: true });
+        interaction.reply({ content: `Bitte öffne folgenden Link: <${protocol}://${host}?data=${base64}>`, ephemeral: true });
     }
 })
 
