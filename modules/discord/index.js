@@ -4,6 +4,7 @@ const event = require('../events/index').eventBus;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on('interactionCreate', async interaction => {
+    console.log(interaction);
     if(interaction.isButton()) {
         console.log(interaction)
         let verificationObject = {
