@@ -1,0 +1,11 @@
+{
+    "protocol": "http",
+    "host": "localhost",
+    "port": 8080,
+    "channelId": "",
+    "channelLogsId": "",
+    "verifiedRoleId": "",
+    "discordToken": "",
+    "turnstileSitekey": "",
+    "turnstileSecret": ""
+}

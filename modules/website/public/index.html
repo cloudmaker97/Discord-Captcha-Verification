@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifizierung abschließen</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
+    <link rel="stylesheet" href="./stylesheet/output.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+    <script src="./script.js"></script>
+</head>
+<body class="bg-slate-900 text-white">
+    <div class="container mx-auto">
+        <div class="bg-gray-800 mt-[2em] p-[1em] rounded">
+
+            <h1 class="text-3xl">Verifizierung</h1>
+            <hr class="my-3">
+
+            <p data-verification-step="waiting">
+                Es wird auf die Bestätigung der Verifizierung gewartet.
+                <div id="turnstile-container" class="mt-2"></div>
+            </p>
+
+            <p class="hidden" data-verification-step="success">
+                <span class="text-green-400 text-xl">Die Verifizierung war erfolgreich.</span><br>
+                Sie können diese Seite nun schließen und zurückkehren.
+            </p>
+
+            <p class="hidden" data-verification-step="failed">
+                <span class="text-red-400 text-xl">Die Verifizierung war nicht erfolgreich. Bitte versuchen Sie es erneut.</span>
+                <br>
+                <br>
+                <b>Details zur Fehlermeldung</b><br>
+                <code id="errorMessage" class="bg-gray-600 p-1 mt-1 block rounded"></code>
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

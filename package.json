@@ -1,0 +1,25 @@
+{
+  "name": "discord-verification",
+  "version": "1.0.0",
+  "description": "This is a bot that verifies users on a discord server.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "tailwind": "npx tailwindcss -i ./source/website/public/stylesheet/input.css -o ./source/website/public/stylesheet/output.css --watch"
+  },
+  "keywords": [
+    "discord",
+    "verification",
+    "bot"
+  ],
+  "author": "Dennis Heinrich <https://dennis-heinri.ch>",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "discord.js": "^14.14.1",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
