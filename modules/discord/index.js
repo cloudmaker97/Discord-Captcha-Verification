@@ -47,6 +47,7 @@ client.once(Events.ClientReady, readyClient => {
 });
 
 event.on('verification:success', (authenticationObject, internetProtocolAddress) => {
+    console.log(authenticationObject)
     let guild = client.guilds.cache.get(authenticationObject.guildId);
     let member = guild.members.cache.get(authenticationObject.userId);
     console.log(member)
