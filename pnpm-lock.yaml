@@ -17,6 +17,9 @@ importers:
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      express-ipfilter:
+        specifier: ^1.3.2
+        version: 1.3.2
     devDependencies:
       tailwindcss:
         specifier: ^3.4.3
@@ -286,6 +289,10 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
+  express-ipfilter@1.3.2:
+    resolution: {integrity: sha512-yMzCWGuVMnR8CFlsIC2spHWoQYp9vtyZXUgS/JdV5GOJgrz6zmKOEZsA4eF1XrxkOIVzaVk6yzTBk65pBhliNw==}
+    engines: {node: '>=8.9.0'}
+
   express@4.19.2:
     resolution: {integrity: sha512-5T6nhjsT+EOMzuck8JjBHARTHfMht0POzlA60WV2pMD3gyXw2LZnZ+ueGdNxG+0calOJcWKbpFcuzLZ91YWq9Q==}
     engines: {node: '>= 0.10.0'}
@@ -373,6 +380,13 @@ packages:
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
+
+  ip6@0.2.10:
+    resolution: {integrity: sha512-1LdpyKjhvepd6EbAU6rW4g14vuYtx5TnJX9TfZZBhsM6DsyPQLNzW12rtbUqXBMwqFrLVV/Gcxv0GNFvJp2cYA==}
+    hasBin: true
+
+  ip@2.0.1:
+    resolution: {integrity: sha512-lJUL9imLTNi1ZfXT+DU6rBBdbiKGBuay9B6xGSPVjUeQwaH1RIGqef8RZkUtHioLmSNpPR5M4HVKJGm1j8FWVQ==}
 
   ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
@@ -601,6 +615,10 @@ packages:
   range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
+
+  range_check@2.0.4:
+    resolution: {integrity: sha512-aed0ocXXj+SIiNNN9b+mZWA3Ow2GXHtftOGk2xQwshK5GbEZAvUcPWNQBLTx/lPcdFRIUFlFCRtHTQNIFMqynQ==}
+    engines: {node: '>=10.0.0'}
 
   raw-body@2.5.2:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
@@ -1057,6 +1075,13 @@ snapshots:
 
   etag@1.8.1: {}
 
+  express-ipfilter@1.3.2:
+    dependencies:
+      ip: 2.0.1
+      lodash: 4.17.21
+      proxy-addr: 2.0.7
+      range_check: 2.0.4
+
   express@4.19.2:
     dependencies:
       accepts: 1.3.8
@@ -1190,6 +1215,10 @@ snapshots:
       safer-buffer: 2.1.2
 
   inherits@2.0.4: {}
+
+  ip6@0.2.10: {}
+
+  ip@2.0.1: {}
 
   ipaddr.js@1.9.1: {}
 
@@ -1358,6 +1387,11 @@ snapshots:
   queue-microtask@1.2.3: {}
 
   range-parser@1.2.1: {}
+
+  range_check@2.0.4:
+    dependencies:
+      ip6: 0.2.10
+      ipaddr.js: 1.9.1
 
   raw-body@2.5.2:
     dependencies:

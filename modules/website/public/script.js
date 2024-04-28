@@ -2,6 +2,10 @@ function inititalize() {
     fetch('/turnstile/id')
     .then(response => response.json())
     .then(data => {
+        if(data.networkBlacklisted) {
+            failed("Dein Netzwerk ist gesperrt. Bitte schalte deinen VPN aus, sofern du einen benutzt.");
+            return;
+        }
         if(getUserData() === false) {
             failed('Kein Benutzer gefunden. Bitte versuchen Sie es erneut.');
             return;
