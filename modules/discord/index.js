@@ -46,28 +46,37 @@ client.once(Events.ClientReady, readyClient => {
     });
 });
 
+client.on('ready', () => {
+    console.log('Discord is connected and cached');
+    event.emit('discord:ready');
+});
+
 event.on('verification:success', (authenticationObject, internetProtocolAddress) => {
-    console.log(authenticationObject.guildId)
-    console.log(authenticationObject.userId)
-    let guild = client.guilds.cache.get(authenticationObject.guildId);
-    console.log(guild)
-    let member = guild.members.cache.get(authenticationObject.userId);
-    console.log(member)
-    if(member) {
-        member.roles.add(verifiedRoleId);
-    }
-
-    let embedBuilder = new EmbedBuilder();
-    embedBuilder.setTitle('Verifizierung abgeschlossen');
-    embedBuilder.setFields([
-        { name: 'Benutzername', value: `<@${member.id}>`, inline: false },
-        { name: 'Zeitpunkt', value: `${new Date().toISOString()}`, inline: false },
-        { name: 'IP-Adresse', value: internetProtocolAddress, inline: false },
-        { name: 'IP-Informationen', value: `[Informationen anzeigen](https://ipinfo.io/${internetProtocolAddress})`, inline: false },
-        { name: 'User-ID', value: `${member.id}`, inline: false },
-    ]);
-
-    client.channels.cache.get(channelLogsId).send({embeds: [embedBuilder]});
+    client.guilds.fetch().then(async () => {
+        const guild = await client.guilds.fetch(authenticationObject.guildId);
+        const member = await guild.members.fetch(authenticationObject.userId);
+        const role = guild.roles.cache.get(verifiedRoleId);
+    
+        if (role && member) {
+            member.roles.add(role)
+                .then(() => {
+                    console.log(`Role ${role.name} has been added to ${member.user.tag}`)
+                    let embedBuilder = new EmbedBuilder();
+                    embedBuilder.setTitle('Verifizierung abgeschlossen');
+                    embedBuilder.setFields([
+                        { name: 'Benutzername', value: `<@${member.id}>`, inline: false },
+                        { name: 'Zeitpunkt', value: `${new Date().toISOString()}`, inline: false },
+                        { name: 'IP-Adresse', value: internetProtocolAddress, inline: false },
+                        { name: 'IP-Informationen', value: `[Informationen anzeigen](https://ipinfo.io/${internetProtocolAddress})`, inline: false },
+                        { name: 'User-ID', value: `${member.id}`, inline: false },
+                    ]);
+                    client.channels.cache.get(channelLogsId).send({embeds: [embedBuilder]});
+                })
+                .catch(console.error);
+        } else {
+            console.log('Role or member not found');
+        }
+    });
 });
 
 client.login(discordToken);
