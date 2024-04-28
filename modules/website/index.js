@@ -10,7 +10,7 @@ const database = require('../database/index');
 blacklist.loadBlacklist().then(blacklist => {
     console.log('Network-Blacklist has been loaded')
     expressApp.use('/', express.static(__dirname + '/public'));
-    expressApp.use(IpFilter(blacklist, { mode: 'allow' }));
+    expressApp.use(IpFilter(blacklist));
     expressApp.use(express.json())
 
     expressApp.use((err, req, res, _next) => {
