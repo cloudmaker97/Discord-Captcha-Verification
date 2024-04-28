@@ -14,7 +14,7 @@ event.on('discord:ready', () => {
         let clientIp = function(req) {
             return req.headers['x-forwarded-for'] || req.socket.remoteAddress
         }
-        expressApp.use(IpFilter(blacklist, {clientIp: clientIp}));
+        expressApp.use(IpFilter(blacklist, {detectIp: clientIp}));
         expressApp.use(express.json())
 
         expressApp.use((err, req, res, _next) => {
