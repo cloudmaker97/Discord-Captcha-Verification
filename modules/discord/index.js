@@ -1,5 +1,5 @@
 const { Client, Events, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder } = require('discord.js');
-const { discordToken, channelId, channelLogsId, host, port, protocol, verifiedRoleId } = require('../../config.json');
+const { discordToken, channelId, channelLogsId, host, dataPrivacyPolicy, protocol, verifiedRoleId } = require('../../config.json');
 const event = require('../events/index').eventBus;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -41,6 +41,10 @@ client.once(Events.ClientReady, readyClient => {
                 .setDescription('Um diesen Server nutzen zu können, musst du dich verifizieren. Dies kannst du tun, indem du auf den Button klickst. Wurdest du in der Vergangenheit bereits einmal verifiziert, musst du dich durch einen Administrator manuell freischalten lassen.')
                 .setColor('#FF0000');
     
+            if(dataPrivacyPolicy && dataPrivacyPolicy.length > 0) {
+                targetChannel.send("Mit der Verifizierung stimmst der Datenschutzerklärung und der Verarbeitung deiner personenbezogenen Daten zu. Die Verifizierung schützt andere Mitglieder vor Spam und Missbrauch. Jedes Konto kann pro Person nur einmal verifiziert werden. Das Team behält sich das Recht vor, die Verifizierung jederzeit zu widerrufen.")
+                targetChannel.send(dataPrivacyPolicy)
+            }
             targetChannel.send({ embeds: [embedBuilder], components: [actionRow] });
         }
     });

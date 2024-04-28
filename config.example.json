@@ -7,5 +7,6 @@
     "verifiedRoleId": "",
     "discordToken": "",
     "turnstileSitekey": "",
-    "turnstileSecret": ""
+    "turnstileSecret": "",
+    "dataPrivacyPolicy": "https://example.com/privacy"
 }
