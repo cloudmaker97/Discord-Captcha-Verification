@@ -38,7 +38,7 @@ client.once(Events.ClientReady, readyClient => {
     
             let embedBuilder = new EmbedBuilder()
                 .setTitle('Verifizierung erforderlich')
-                .setDescription('Um diesen Server nutzen zu können, musst du dich verifizieren. Dies kannst du tun, indem du auf den Button klickst.')
+                .setDescription('Um diesen Server nutzen zu können, musst du dich verifizieren. Dies kannst du tun, indem du auf den Button klickst. Wurdest du in der Vergangenheit bereits einmal verifiziert, musst du dich durch einen Administrator manuell freischalten lassen.')
                 .setColor('#FF0000');
     
             targetChannel.send({ embeds: [embedBuilder], components: [actionRow] });

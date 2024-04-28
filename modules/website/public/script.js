@@ -1,5 +1,7 @@
 function inititalize() {
-    fetch('/turnstile/id')
+    fetch(`/turnstile/id?data=${btoa(JSON.stringify(getUserData()))}`, {
+        method: 'GET',
+    })
     .then(response => response.json())
     .then(data => {
         if(data.networkBlacklisted) {
@@ -10,6 +12,7 @@ function inititalize() {
             failed('Kein Benutzer gefunden. Bitte versuchen Sie es erneut.');
             return;
         }
+
         window.onloadTurnstileCallback = function () {
             turnstile.render('#turnstile-container', {
                 sitekey: data.id,
@@ -18,6 +21,12 @@ function inititalize() {
                 },
             });
         };
+
+        // Load the turnstile script from Cloudflare, so that the callback function is available in the global scope
+        let newScriptElement = document.createElement('script');
+        newScriptElement.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback';
+        newScriptElement.defer = true;
+        document.body.appendChild(newScriptElement);
     }).catch((error) => {
         failed(error);
     });
@@ -73,7 +82,7 @@ function sendVerification(turnstileToken, userData) {
         success();
         // Check if the response was really successful (turnstile verification on the server side)
         if(!data.success) {
-            failed();
+            failed(data.message);
         }
     })
     .catch((error) => {
