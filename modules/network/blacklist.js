@@ -7,8 +7,9 @@ class Blacklist {
     }
 
     async loadBlacklist() {
-        const files = ["vpn.txt", "datacenter.txt"];
-        const folder = "./modules/network/blacklist/";
+        // https://github.com/josephrocca/is-vpn/blob/main/vpn-or-datacenter-ipv4-ranges.txt
+        const files = ["blacklist.txt"];
+        const folder = "./modules/network/";
         for (const file of files) {
             const fileStream = fs.createReadStream(folder + file);
             const rl = readline.createInterface({
