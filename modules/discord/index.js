@@ -49,7 +49,10 @@ client.once(Events.ClientReady, readyClient => {
 event.on('verification:success', (authenticationObject, internetProtocolAddress) => {
     let guild = client.guilds.cache.get(authenticationObject.guildId);
     let member = guild.members.cache.get(authenticationObject.userId);
-    member.roles.add(verifiedRoleId);
+    console.log(member)
+    if(member) {
+        member.roles.add(verifiedRoleId);
+    }
 
     let embedBuilder = new EmbedBuilder();
     embedBuilder.setTitle('Verifizierung abgeschlossen');
