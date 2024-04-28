@@ -12,7 +12,7 @@ event.on('discord:ready', () => {
         console.log('Network-Blacklist has been loaded')
         expressApp.use('/', express.static(__dirname + '/public'));
         let clientIp = function(req) {
-            return req.headers['x-forwarded-for'] ? (req.headers['x-forwarded-for']).split(',')[0] : ""
+            return req.headers['x-forwarded-for'] || req.socket.remoteAddress
         }
         expressApp.use(IpFilter(blacklist, {clientIp: clientIp}));
         expressApp.use(express.json())
